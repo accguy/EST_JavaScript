@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <style></style>
+  </head>
+  <body>
+    <script>
+      // "use strict";
+      a = 10; // 키워드 없이 선언 + 할당이 가능하다
+      console.log(a);
+      // var a = 10;
+
+      // 재선언
+      var name = "DAON";
+      console.log(name);
+      var name = "DASOL"; // var 키워드는 재선언이 가능하기 때문에 중복된 변수를 잘못 선언할수 있다.
+      console.log(name); // 사용하지 말자
+
+      let name2 = "DAON";
+      // let name2; // let 키워드와 const는 재선언이 불가능하다.
+
+      // 재할당
+      var x = 10;
+      x = 20;
+
+      let y = 30;
+      y = 40;
+
+      const z = 50;
+      z = 60; // const 변수는 재할당이 불가능하다.
+    </script>
+  </body>
+</html>

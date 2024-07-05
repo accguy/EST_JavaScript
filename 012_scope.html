@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <style></style>
+  </head>
+  <body>
+    <script>
+      // 전역 스코프: 어디서든 접근이 가능하다.
+      var a = 10;
+      let b = 20;
+      const c = 30;
+
+      function func1() {
+        // 함수 스코프: 함수 내에서만 접근이 가능하다.
+        var fa = 40;
+        let fb = 50;
+        const fc = 60;
+        console.log("function:", a, b, c);
+      }
+      // var는 함수레벨 스코프니까 함수로 감싸고 있기때문에 못나오는데 블록스코프인 let, const는 왜 못나오나?
+      // 왜냐하면 함수에 있는 중괄호도 블록이기 때문에 블록을 빠져나올수 없기 때문이다.
+      console.log("function:", fa);
+      console.log("function:", fb);
+      console.log("function:", fc);
+      func1();
+
+      {
+        console.log("block:", a, b, c);
+        // 블록 스코프: let, const로 선언된 변수는 블록스코프로 감싸고 있는 블록 내부에서만 접근가능하지만
+        // var로 선언된 변수는 함수레벨 스코프이기 때문에 감싸고 있는 함수가 없기 때문에
+        // 전역변수와 같이 어디서든 접근가능하다.
+        var Ba = 70;
+        let Bb = 80;
+        const Bc = 90;
+        console.log("function:", Ba, Bb, Bc);
+      }
+      console.log("function:", Ba);
+      console.log("function:", Bb);
+      console.log("function:", Bc);
+    </script>
+  </body>
+</html>
