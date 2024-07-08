@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <style></style>
+  </head>
+  <body>
+    <script>
+      const a = "Happy";
+      a[4] = "k"; // 문자열은 원시타입이기 때문에 값이 변하지 않는다.
+      console.log(a[4]); // y
+
+      console.log(a[-1]); // 음수 인덱스 적용 X
+      console.log(a.at(-1)); // at 메소드를 사용하여 음수 인덱스로 접근 할 수 있다.
+
+      console.log(a.length); // 5
+      console.log(a[a.length - 1]); // y
+    </script>
+  </body>
+</html>

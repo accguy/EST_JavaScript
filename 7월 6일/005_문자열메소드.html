@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <style></style>
+  </head>
+  <body>
+    <script>
+      // 문자열 탐색
+      const a = "Hello World, Hello weniv!";
+
+      console.log("---indexOf---");
+      console.log(a.indexOf("Hello")); // 0
+      console.log(a.indexOf("Hello", 3)); // 13
+      console.log(a.indexOf("Hello", 13)); // 13
+      console.log(a.indexOf("Hello", 14)); // -1
+      console.log(a.indexOf("weniv")); // 19
+      console.log(a.indexOf("TCP")); // -1
+
+      console.log("---lastIndexOf---");
+      console.log(a.lastIndexOf("Hello")); // 13
+      console.log(a.lastIndexOf("Hello", 12)); // 0
+
+      console.log("%c---includes---", "color:red");
+      console.log(a.includes("Hello")); // true
+      console.log(a.includes("Hello", 14)); // false
+      console.log(a.includes("NO")); // false
+
+      // 정규표현식과 일치하는 값을 배열로 반환한다.
+      console.log("---match---");
+      console.log(a.match(/[A-Z]/g)); // g: global
+      console.log(a.match(/[a-z]/g));
+      console.log(a.match(/[A-z]/g));
+      console.log(a.match(/[0-9]/g)); // null
+
+      console.log("---substring---");
+      const b = "ABCDEFGHIJ";
+      console.log(b.substring(1, 5)); // BCDE  (시작인덱스 ~ 종료인덱스 - 1)
+      console.log(b.substring(4, b.length - 1)); // EFGHIJ
+      // 음수와 문자열은 0으로 취급한다.
+      console.log(b.substring(-1, 5)); // ABCDE
+      // 시작인덱스가 끝인덱스보다 크다면 두 인덱스를 교환한다.
+      console.log(b.substring(2, "hell")); // AB
+
+      console.log("---slice---");
+      const c = "Hello World";
+      console.log(c.slice(1, 7)); //ello W
+      console.log(c.slice(1, -1)); // 음수 메소드 사용가능
+      console.log(c.slice("Hello", 2)); // 가능
+      console.log(c.slice(2, "Hello")); // 불가능 두 인덱스의 위치 자동 교환 없음
+
+      console.log("---substr---");
+      console.log(c.substr(1, 3)); // substr(시작 인덱스, 추출 길이)
+
+      console.log("---split---");
+      const phone = "010-8882-6450-010";
+      console.log(phone.split());
+      console.log(phone.split("-"));
+      console.log(phone.split(""));
+      console.log(phone.split("", 4));
+
+      console.log("---replace---");
+      console.log(phone.replace("010", "999"));
+      console.log(phone.replace(/010/g, "999"));
+
+      console.log("---replaceAll---");
+      console.log(phone.replaceAll("010", "777"));
+
+      console.log("---toUpperCase/toLowerCase---");
+      const search = "JavaScript";
+      console.log(search.toUpperCase());
+      console.log(search.toLowerCase());
+
+      console.log("---repeat---");
+      console.log(search.repeat(3));
+
+      console.log("---trim---");
+      console.log("    HELLO    ".trim());
+
+      console.log("---padStart---");
+      console.log("3".padStart(2, "0")); // 03
+      console.log("12".padStart(2, "0")); // 12
+
+      console.log("---padEnd---");
+      console.log("3".padEnd(2, "-")); // 3-
+      console.log("12".padEnd(2, "-")); // 12
+      console.log("12".padEnd(5, "-")); // 12---
+    </script>
+  </body>
+</html>
