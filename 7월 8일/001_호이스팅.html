@@ -9,10 +9,10 @@
   <body>
     <script>
       console.log(a);
-      var a; // var 선언문 -> 호이스팅되어 최상단으로 올라가면 그냥 바로 undefined로 초기화됨
+      var a; // var 변수 -> 호이스팅되어 최상단으로 올라가면 그냥 바로 undefined로 초기화됨
 
       let b;
-      // let 선언문 -> 호이스팅되어 최상단으로 올라가면 undefined로 초기화 안됨.
+      // let 변수 -> 호이스팅되어 최상단으로 올라가면 undefined로 초기화 안됨.
       // 선언문의 위치까지 와야 undefined or 할당값으로 초기화됨.
       // 따라서 호이스팅은 되지만 선언문의 위치 이전까지는 값을 참조할수없음.
       // 그 참조할수없는 범위를 TDZ라고함
