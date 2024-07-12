@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <style></style>
+  </head>
+  <body>
+    <script>
+      var peter = {
+        name: "Peter Parker",
+        sayName: function (a, b) {
+          console.log(this.name + " is " + a + " or " + b);
+        },
+      };
+
+      var bruice = {
+        name: "Bruice Wayne",
+      };
+
+      // bruce를 this로 사용하고 ["batman", "richman"]을 메서드의 인자로 전달하겠다.
+      peter.sayName.apply(bruice, ["batman", "richman"]);
+    </script>
+  </body>
+</html>

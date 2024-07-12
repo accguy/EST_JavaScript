@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <style></style>
+  </head>
+  <body>
+    <script>
+      function sayName() {
+        console.log(this.name);
+      }
+
+      var bruce = {
+        name: "bruce",
+        sayName: sayName,
+      };
+
+      var peter = {
+        name: "peter",
+        sayName: sayName.bind(bruce),
+      };
+
+      peter.sayName();
+      bruce.sayName();
+
+      const bruceSayName = sayName.bind(bruce);
+      bruceSayName();
+
+      /* peter.sayName() 과 bruce.sayName() 의 결과 값이 무엇이 될지 생각해봅시다. */
+
+      const person0 = {
+        name: "hojun",
+        age: 25,
+        a() {
+          console.log(this); // person 객체 OK - (person).a OK
+          console.log(this.name); // hojun
+          function b() {
+            console.log(this); // window 객체 - (어떤객체).b ? 알수없다
+            console.log(this.name); //
+            function c() {
+              console.log(this); // window 객체 - (어떤객체).c ? 알수없다
+              console.log(this.name); //
+            }
+            c();
+          }
+          b();
+        },
+      };
+      person0.a();
+
+      // a에서 this = person
+      // b에서 this = 상위스코프(상위에서 person을 보고있음) 즉 person
+      // c에서 this = 상위스코프(상위에서 person을 보고있음) 즉 person
+      const person1 = {
+        name: "hojun",
+        age: 25,
+        a() {
+          console.log(this);
+          console.log(this.name);
+          let b = () => {
+            console.log(this);
+            console.log(this.name);
+            let c = () => {
+              console.log(this);
+              console.log(this.name);
+            };
+            c();
+          };
+          b();
+        },
+      };
+      person1.a();
+    </script>
+  </body>
+</html>

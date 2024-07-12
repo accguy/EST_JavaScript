@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <style></style>
+  </head>
+  <body>
+    <script>
+      function printMe({ name, age, email } = {}) {
+        // 뒤에 빈배열은 인자를 넣지 않았을때 undefined로 나오게함
+        console.log(`이름: ${name}, 나이: ${age}, 이메일: ${email}`);
+      }
+
+      const me = {
+        name: "재현",
+        age: 25,
+        email: "jaehyun@something.com",
+      };
+
+      printMe(me);
+
+      const name = "daon";
+      const number = 1;
+      const obj = { name, number };
+      console.log(obj);
+    </script>
+  </body>
+</html>

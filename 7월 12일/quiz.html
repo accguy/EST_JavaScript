@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <style></style>
+  </head>
+  <body>
+    <script>
+      const obj1 = {
+        num: 1,
+        func() {
+          // debugger;
+          setTimeout(function () {
+            // 함수는 윈도우 객체에 생성된다.
+            console.log(this);
+          }, 1000);
+        },
+      };
+      const obj2 = {
+        num: 1,
+        func() {
+          // debugger;
+          setTimeout(() => console.log(this.num), 1000); // 함수가 obj 객체에 생성된다.
+        },
+      };
+      obj1.func();
+      obj2.func();
+
+      const obj3 = {
+        num: 1,
+        func() {
+          console.log(this, "obj3"); // obj3
+          setTimeout(function () {
+            console.log(this, "obj3"); // window
+          }, 1000); // setTimeout이 실행하는 곳이 window 라서!!, this 바인딩이 안됨
+        },
+      };
+      obj3.func();
+    </script>
+  </body>
+</html>

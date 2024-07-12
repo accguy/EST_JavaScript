@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <style></style>
+  </head>
+  <body>
+    <button id="btn">Click me!</button>
+
+    <script>
+      const button = document.getElementById("btn");
+      button.addEventListener("click", function () {
+        // button '객체'안에서 this를 호출했기 때문에.
+        console.log(this);
+      });
+    </script>
+  </body>
+</html>
