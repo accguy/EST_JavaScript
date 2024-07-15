@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <style></style>
+  </head>
+  <body>
+    <script>
+      let z = 100;
+      function sum(x) {
+        // x는 매개변수(parameter)이면서 지역변수(local val)
+        let y = 50; // y는 지역변수
+        z = z + y;
+        return x + y;
+      }
+      console.log(sum(10)); // 10은 전달인자(argument)
+
+      // console.log(x); // x is not defined
+      // console.log(y); // y is not defined
+      console.log(z); // 150
+
+      {
+        var a = 1; // 블록 빠져나옴
+        let b = 2; // X
+        const c = 3; // X
+      }
+    </script>
+  </body>
+</html>

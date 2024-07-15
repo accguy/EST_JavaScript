@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <style></style>
+  </head>
+  <body>
+    <script>
+      // console.log(x); // undefined (var 변수 호이스팅으로 인해 선언은 되었지만 초기화되지 않음)
+      // console.log(y); // Cannot access 'y' before initialization (TDZ 때문에 접근 불가)
+      // console.log(z); // Cannot access 'z' before initialization (TDZ 때문에 접근 불가)
+
+      var x = 1; // var로 선언되어 호이스팅됨, 초기화됨
+      let y = 2; // let으로 선언되어 호이스팅되지만 초기화 구문 전에 접근 불가
+      const z = 3; // const로 선언되어 호이스팅되지만 초기화 구문 전에 접근 불가
+
+      sayHi(); // "Hello, lions!" (함수 선언이 호이스팅되어 호출 가능)
+
+      // 함수 선언문으로 정의된 함수는 코드 내 어디서든 호출할 수 있습니다.
+      function sayHi() {
+        console.log("Hello, lions!");
+      }
+    </script>
+  </body>
+</html>

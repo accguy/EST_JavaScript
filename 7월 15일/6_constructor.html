@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <style></style>
+  </head>
+  <body>
+    <script>
+      let book = {
+        책이름:
+          "알잘딱깔센 JavaScript 비동기 프로그래밍 - 비동기 너 내 동기가 돼라",
+        책가격: 0,
+        저자: ["구나영", "김경림"],
+        출판일: "2022.08.12",
+      };
+
+      // 생성자 함수
+      function Book(책이름, 책가격, 저자, 출판일) {
+        this.책이름 = 책이름;
+        this.책가격 = 책가격;
+        this.저자 = 저자;
+        this.출판일 = 출판일;
+      }
+
+      // new 키워드를 사용하여 생성자 함수를 호출하면, 새로운 객체가 생성되고 this가 그 객체를 가리키게 됩니다.
+      // 생성자 함수 Book은 새로운 객체의 프로퍼티를 초기화합니다.
+      let book1 = new Book("JS", 0, ["이호준"], "2099.10.30");
+      let book2 = new Book("Python", 100000, ["이호준"], "2099.11.30");
+      let book3 = new Book("React", 1000000, ["이호준"], "2099.12.30");
+      console.log(book1, book2, book3);
+
+      // 일반 함수 호출로 간주되어 this가 글로벌 객체를 가리키게 됩니다.
+      // 반환 값이 없기 때문에 undefined가 반환됩니다.
+      let book4 = Book("JS", 0, ["이호준"], "2099.10.30"); // undefined
+      let book5 = Book("Python", 100000, ["이호준"], "2099.11.30"); // undefined
+      let book6 = new Book("React", 1000000, ["이호준"], "2099.12.30");
+      console.log(book4, book5, book6); //
+    </script>
+  </body>
+</html>

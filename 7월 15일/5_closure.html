@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <style></style>
+  </head>
+  <body>
+    <script>
+      function outerFunc() {
+        const x = 10;
+
+        function innerFunc() {
+          console.log(x);
+        }
+        return innerFunc;
+      }
+      const func1 = outerFunc(); // outerFunc()의 반환값이 함수
+
+      // -------
+      function outerFunc() {
+        let x = 10;
+        function innerFunc(y) {
+          x += y;
+          return x;
+        }
+        return innerFunc;
+      }
+      const func2 = outerFunc();
+
+      // 외부함수가 호출되면 내부함수를 리턴합니다.
+      // 생성된 내부함수가 외부함수의 변수를 계속 사용하고있으니까
+      // 외부함수가 종료되어도 외부함수의 변수를 가비지콜렉터가 안치우고 냅둡니다.
+      // 생성된 내부함수를 통해서만 변수의 값에 접근할수있음
+
+      function 제곱(x) {
+        return function (y) {
+          return y ** x;
+        };
+      }
+
+      var 제곱2 = 제곱(2);
+      var 제곱3 = 제곱(3);
+
+      제곱2(10);
+      제곱3(10);
+
+      /////////////////////
+      function createCounter() {
+        let count = 0; // 클로저가 포착할 변수
+
+        // 캡슐화하여 반환된 객체의 메서드들이 클로저가 됩니다.
+        return {
+          increment: function () {
+            count++;
+            console.log(count);
+          },
+          decrement: function () {
+            count--;
+            console.log(count);
+          },
+          getCount: function () {
+            return count;
+          },
+        };
+      }
+
+      const counter = createCounter(); // 카운터 객체 생성
+      counter.increment(); // 1
+      counter.increment(); // 2
+      console.log(counter.getCount()); // 2
+      counter.decrement(); // 1
+
+      const counter2 = createCounter(); // 두번째 카운터 객체. 별도의 count 변수를 갖습니다.
+      counter2.increment();
+      counter2.increment();
+      counter2.increment();
+      console.log(counter2.getCount());
+      counter2.decrement();
+      counter2.decrement();
+      counter2.decrement();
+      counter2.decrement();
+
+      //////////////////////////
+      const x = 100;
+
+      function a() {
+        const x = 1; // 딴세상
+        b(); // 외부함수 -> 외부변수 참조
+      }
+
+      // 함수 선언식이므로 어디서든 사용가능
+      function b() {
+        console.log(x);
+      }
+
+      a(); // 100
+      b(); // 100
+
+      ///////////////
+      const xx = 100;
+
+      function a() {
+        const xx = 1;
+        function b() {
+          console.log(xx);
+        }
+        b();
+      }
+      a(); // 1
+    </script>
+  </body>
+</html>
