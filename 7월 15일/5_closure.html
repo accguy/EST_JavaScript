@@ -104,11 +104,11 @@
       function a() {
         const xx = 1;
         function b() {
-          console.log(xx);
+          console.log(xx); // 함수 내부 범위에 있는 xx사용함
         }
         b();
       }
-      a(); // 1
+      a(); // 1, 리턴값이 없는 함수
     </script>
   </body>
 </html>

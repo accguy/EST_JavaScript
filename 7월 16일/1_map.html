@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <style></style>
+  </head>
+  <body>
+    <script>
+      // new Map()
+      const m = new Map();
+
+      // Map.set(key, value)
+      m.set("하나", 11111);
+      m.set(11111, "하나");
+      m.set(true, 1);
+      m.set(false, 0);
+
+      console.log(m);
+      // Map.size
+      console.log("size:", m.size);
+
+      // Map.get(key)
+      console.log(m.get("하나"));
+      console.log(m.get(11111));
+      console.log(m.get(true));
+      console.log(m.get(false));
+
+      // Map.has(key)
+      console.log(m.has("하나"));
+      console.log(m.has("둘"));
+
+      // Map.delete(key)
+      console.log(m.delete("하나")); // key가 "하나"인 값을 지운다.
+      console.log(m.has("하나")); // false
+      console.log(m);
+
+      // Map.clear()
+      // m.clear();
+      // console.log(m);
+
+      // Map 순회 - for of
+      for (const item of m) {
+        console.log(`m을 순회 key : ${item[0]}`); // item[0] <= key
+        console.log(`m을 순회 value : ${item[1]}`); // item[1] <= value
+      }
+
+      // Map의 값에 접근
+      console.log(m.keys()); // 키 가져오기
+      console.log(m.values()); // 값 가져오기
+      console.log(m.entries()); // 키-값 쌍 가져오기
+
+      // 인덱스를 가지는 자료형을 맵핑하기
+      let temp = new Map([
+        [0, 0],
+        [1, 10],
+        [2, 20],
+        [3, 30],
+        [4, 40],
+        [4, 444],
+        ["마지막", "end"],
+      ]);
+      console.log(temp);
+
+      // Map과 Object의 차이
+      // 1. Object의 키는 문자열 타입으로만 지정해야하지만, Map의 키는 모든 값을 가질 수 있습니다.
+      // 2. Object는 크기를 사용자가 직접 수동으로 알아내야 하지만, Map은 size가 있다.
+
+      // 배열 [1,2] 라는 키로 조회할 수는 없습니다.
+      m.set([1, 2], "리얼리?");
+      console.log(m);
+      console.log(m.get([1, 2])); // undefined
+
+      // console.log([] === []); // false
+      // 1. 배열과 객체는 참조형 데이터 타입입니다.
+      //    즉, 변수에 실제 값이 아니라 값이 저장된 메모리 주소를 저장합니다.
+      // 2. [] === []는 두 개의 새로운 배열을 생성합니다. 이 배열들은 서로 다른 메모리 위치를 참조하게 됩니다.
+      // 3. 서로 다른 메모리 주소를 참조하기 때문에, 이 두 배열은 동일한 객체가 아닙니다.
+
+      // 변수에 저장해서 배열을 키로 저장하고 호출에 사용하는건 가능함.
+      const real = [3, 4];
+      m.set(real, "예스!!");
+      console.log(m);
+      console.log(m.get(real)); // 예스!!
+    </script>
+  </body>
+</html>
