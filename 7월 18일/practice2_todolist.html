@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>todolist</title>
+  </head>
+  <body>
+    <h1>나의 todo list</h1>
+    <!-- form -->
+    <form action="">
+      <input type="text" />
+      <input type="submit" value="추가" />
+    </form>
+
+    <!-- todo-list -->
+    <p>
+      1. 오늘 저녁에는 부대찌게를 끓여 먹겠다.
+      <button type="button">삭제</button>
+    </p>
+    <p>2. 후식으로 슈팅스타를 먹겠다. <button type="button">삭제</button></p>
+    <p>
+      3. 자기 전에 반드시 내일 아침 메뉴를 생각해두겠다.
+      <button type="button">삭제</button>
+    </p>
+  </body>
+
+  <script>
+    const $body = document.body;
+
+    // 0. input태그랑 입력버튼 추가하기 todo list만들어보기(추가/삭제기능)
+    const $form = document.querySelector("form");
+    const $input = document.querySelector("input");
+
+    $form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const newText = $input.value;
+      if (newText !== "") {
+        const newItem = document.createElement("p");
+        newItem.innerHTML = `${newText} <button type="button">삭제</button>`; // 버튼태그는 텍스트로 삽입
+        $body.appendChild(newItem);
+        $input.value = "";
+      }
+    });
+
+    // 1. p 태그를 클릭하면 p 태그의 컨텐츠를 출력하는 alert 창을 띄워줍니다.
+    $body.addEventListener("click", function (e) {
+      if (e.target.nodeName === "P") {
+        window.alert(e.target.childNodes[0].nodeValue);
+      }
+    });
+
+    // 2. 삭제 버튼을 클릭하면 삭제할 것인지를 물어보는 confirm 창을 띄워주고, 확인을 누르면 P태그를 삭제합니다.
+    $body.addEventListener("click", function (e) {
+      if (e.target.nodeName === "BUTTON") {
+        if (window.confirm("삭제하시겠습니까?")) {
+          e.target.parentElement.remove();
+        } else {
+          return;
+        }
+      }
+    });
+  </script>
+</html>

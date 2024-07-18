@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <style></style>
+  </head>
+  <body>
+    <!-- 앵커의 기본 동작(링크로 이동하는 동작) 중지 -->
+    <!-- a를 클릭해도 div로 이벤트가 전파될수있다 ???-->
+    <div>
+      <a href="https://www.naver.com" class="link">네이버 링크입니다만...</a>
+    </div>
+
+    <script>
+      const link = document.querySelector(".link");
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        console.log("a 클릭");
+        e.stopPropagation();
+      });
+      // addEventListener는 디폴트가 버블링이다.
+      // stopPropagation은 이벤트가 다음단계로 전파되는것을 막는다.(여기선 부모 요소인 div로 가는걸 막음)
+
+      // 그래도 div에 이벤트를 적용하고 싶다면 세번째 인자로 true를 추가해서 캡쳐링 이벤트에 적용한다.
+      document.querySelector("div").addEventListener(
+        "click",
+        function (e) {
+          console.log("div 클릭!");
+        },
+        true // 캡쳐링 이벤트임
+      );
+    </script>
+  </body>
+</html>
