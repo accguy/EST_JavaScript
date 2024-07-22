@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>promise</title>
+  </head>
+  <body></body>
+  <script>
+    // promise 객체 생성
+    const promise = new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+      xhr.open("GET", "hello.txt");
+      xhr.onreadystatechange = () => {
+        if (xhr.readyState == 4) {
+          if (xhr.status == 200) {
+            resolve(xhr.responseText);
+          } else {
+            reject(`${new Error(xhr.status)}`);
+          }
+        }
+      };
+      xhr.send();
+    });
+
+    // promise 사용
+    promise.then((x) => console.log(x)).catch((err) => console.log(err));
+  </script>
+</html>

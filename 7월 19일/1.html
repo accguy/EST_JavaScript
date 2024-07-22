@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>class</title>
+  </head>
+  <body></body>
+  <script>
+    // 실습 : 음식 이름의 배열을 전달하면
+    // 배열안에서 랜덤하게 메뉴를 뽑아내는 로봇객체의 생성자를 만들어보세요.
+    function Robot() {
+      this.serveRandomFood = function (foodArray) {
+        console.log(foodArray[Math.floor(Math.random() * foodArray.length)]);
+      };
+    }
+
+    function solution(n) {
+      var answer = 0;
+      // 최대공약수를 먼저 구한다.
+      function GCD(a, b) {
+        while (b !== 0) {
+          let temp = b;
+          b = a % b;
+          a = temp;
+        }
+        return a;
+      }
+      // 최소공배수 = 두수의 곱 / 최대공약수
+      return (n * 6) / GCD(n, 6);
+    }
+  </script>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>practice</title>
+  </head>
+  <body>
+    <p></p>
+  </body>
+  <script>
+    // let result;
+    // function xhrRequest() {
+    //   const requestObj = new XMLHttpRequest();
+    //   requestObj.open("GET", "hello.txt");
+    //   requestObj.onreadystatechange = () => {
+    //     if (requestObj.readyState === 4 && requestObj.status === 200) {
+    //       result = requestObj.responseText;
+    //       document.querySelector("p").innerText = result;
+    //     }
+    //   };
+    //   requestObj.send();
+    // }
+
+    // xhrRequest();
+
+    const sayHello = new Promise((resolve, reject) => {
+      const requestObj = new XMLHttpRequest();
+      requestObj.open("GET", "hello.txt");
+      requestObj.onreadystatechange = () => {
+        if (requestObj.readyState === 4) {
+          if (requestObj.status === 200) {
+            const result = requestObj.responseText;
+            resolve(result);
+          } else {
+            reject(
+              new Error(
+                `요청이 정상적으로 이뤄지지 않았습니다.: ${requestObj.status}`
+              )
+            );
+          }
+        }
+      };
+      requestObj.send();
+    });
+
+    sayHello
+      .then((asyncResult) => {
+        document.querySelector("p").innerText = asyncResult;
+        console.log("약속이 이루어졌습니다!");
+      })
+      .catch((error) => {
+        document.querySelector("p").innerText = error;
+        console.log(error);
+      });
+  </script>
+</html>

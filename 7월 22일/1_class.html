@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <style></style>
+  </head>
+  <body></body>
+  <script>
+    // class Robot {
+    //   constructor(name) {
+    //     this.name = name;
+    //   }
+    //   // sayYourName()이 프로토타입에 들어가있음
+    //   sayYourName() {
+    //     console.log(`내 이름은 ${this.name}입니다.`);
+    //   }
+    // }
+    // const robot = new Robot("xxx");
+    // console.log(robot);
+
+    // class BabyRobot extends Robot {
+    //   constructor(name, age) {
+    //     // this.name = name;
+    //     super(name);
+    //     this.age = age;
+    //     this.name = "베이비" + name;
+    //   }
+    //   sayYourName() {
+    //     console.log(`to ${this.name}입니다.`);
+    //   }
+    // }
+    // const babyRobot = new BabyRobot("xxx", 5);
+    // console.log(babyRobot);
+
+    class Sausage {
+      constructor(ingredient1, ingredient2) {
+        this.ingredient1 = ingredient1;
+        this.ingredient2 = ingredient2;
+      }
+      taste() {
+        console.log(`${this.ingredient1}와 ${this.ingredient2}맛이 난다!`);
+      }
+    }
+    class FireSausage extends Sausage {
+      tasteFire() {
+        this.taste();
+        // super.taste();
+        console.log("불맛🔥");
+      }
+    }
+    const sausage = new Sausage("사과", "땅콩");
+    const fireSausage = new FireSausage("오렌지", "아몬드");
+    sausage.taste();
+    fireSausage.tasteFire();
+
+    // class Robot {
+    //   #password;
+    //   constructor(name, pw) {
+    //     this.name = name;
+    //     this.#password = pw;
+    //   }
+
+    //   sayYourName() {
+    //     console.log(`삐리비리. 제 이름은 ${this.name}입니다. 주인님.`);
+    //   }
+    //   getPassword() {
+    //     return this.#password;
+    //   }
+    //   setPassword(pw) {
+    //     this.#password = pw;
+    //   }
+    // }
+
+    class Robot {
+      #password;
+      constructor(name, pw) {
+        this.name = name;
+        this.#password = pw;
+      }
+
+      sayYourName() {
+        console.log(`삐리비리. 제 이름은 ${this.name}입니다. 주인님.`);
+      }
+      // password에 접근하는 과정에서 실행되는 함수 설정
+      get password() {
+        console.log("password를 가져오는 중...");
+        return this.#password;
+      }
+      set password(pw) {
+        console.log("password를 바꾸는 중...");
+        this.#password = pw;
+      }
+    }
+
+    const bot = new Robot("재현", 1234);
+    // console.log(bot.#password);
+    console.log(bot.password);
+    console.log((bot.password = 9999));
+  </script>
+</html>

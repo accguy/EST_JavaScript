@@ -14,7 +14,12 @@
     </div>
 
     <script>
-      const link = document.querySelector(".link");
+      // 지금 아래 a 랑 div에 이벤트를 각각 등록을 하였는데
+      // 둘다 기본(버블링 이벤트)이라면 a를 클릭하면 a의 부모 요소인 div에 등록된 이벤트도
+      // 다음 단계이므로 자연스럽게 실행된다.
+      // 따라서 a에 e.stopPropagation()을 사용하면
+      // 이벤트가 다음 단계로 전파되는것을 막아서 div이벤트는 실행이 되지 않는다.
+      const link = document.querySelector(".link"); // a 태그
       link.addEventListener("click", (e) => {
         e.preventDefault();
         console.log("a 클릭");
@@ -23,13 +28,16 @@
       // addEventListener는 디폴트가 버블링이다.
       // stopPropagation은 이벤트가 다음단계로 전파되는것을 막는다.(여기선 부모 요소인 div로 가는걸 막음)
 
-      // 그래도 div에 이벤트를 적용하고 싶다면 세번째 인자로 true를 추가해서 캡쳐링 이벤트에 적용한다.
+      // 그래도 a를 클릭했을때도
+      // div에 이벤트를 적용하고 싶다면
+      // 세번째 인자로 true를 추가해서 div 캡쳐링 이벤트에 적용하면된다.
+      // div 캡처링 -> (a 캡처링) -> a 버블링 -x-> (div 버블링)
       document.querySelector("div").addEventListener(
         "click",
         function (e) {
           console.log("div 클릭!");
         },
-        true // 캡쳐링 이벤트임
+        true // 캡쳐링 이벤트임을 명시
       );
     </script>
   </body>
