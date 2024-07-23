@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <style></style>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script>
+    const req = new Promise((resolve, reject) => {
+      const requestObj = new XMLHttpRequest();
+      requestObj.open("GET", "https://test.api.weniv.co.kr/mall");
+      requestObj.onreadystatechange = () => {
+        if (requestObj.readyState === 4 && requestObj.status === 200) {
+          const result = requestObj.responseText;
+          resolve(result);
+        } else if (requestObj.readyState === 4 && requestObj.status !== 200) {
+          reject(new Error(`status(${requestObj.status})`));
+        }
+      };
+      requestObj.send();
+    });
+
+    function product(data) {
+      // data = 객체
+      // 상품 그려줄 컨테이너
+      const $root = document.querySelector("#root");
+      const $productDiv = document.createElement("div");
+      const $productName = document.createElement("h2");
+      const $productImage = document.createElement("img");
+
+      // 각 요소에 데이터 넣기
+      $productName.textContent = data.productName;
+      $productImage.src = "https://test.api.weniv.co.kr/" + data.thumbnailImg;
+      $productImage.style.width = "200px";
+      $productDiv.append($productName, $productImage);
+      $root.appendChild($productDiv);
+    }
+
+    req
+      .then((res) => {
+        res = JSON.parse(res);
+        res.forEach(product); // 인자에 함수를 넣음
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  </script>
+</html>

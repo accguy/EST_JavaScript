@@ -12,10 +12,13 @@
       const xhr = new XMLHttpRequest();
       xhr.open("GET", "hello.txt");
       xhr.onreadystatechange = () => {
-        if (xhr.readyState == 4) {
-          if (xhr.status == 200) {
+        // 통신 완료
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            // 통신 완료 && status == 200
             resolve(xhr.responseText);
           } else {
+            // 통신 완료 && status != 200
             reject(`${new Error(xhr.status)}`);
           }
         }
@@ -24,6 +27,8 @@
     });
 
     // promise 사용
-    promise.then((x) => console.log(x)).catch((err) => console.log(err));
+    promise
+      .then((x) => console.log("성공:", x))
+      .catch((err) => console.log("실패:", err));
   </script>
 </html>

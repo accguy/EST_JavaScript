@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <style></style>
+  </head>
+  <body></body>
+  <script>
+    const req = fetch("https://test.api.weniv.co.kr/mall");
+    req
+      .then((res) => {
+        console.log(res); // Response 객체
+        // console.log(res.json()); // Promise 객체 - 아직 결과가 안나와서
+        return res.json();
+      })
+      .then((json) => {
+        console.log(json); // 결과 나옴 -> JSON 객체(문자열 아님)
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  </script>
+</html>

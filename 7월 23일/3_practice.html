@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <style></style>
+  </head>
+  <body></body>
+  <script>
+    const req = new Promise((resolve, reject) => {
+      const requestObj = new XMLHttpRequest();
+      requestObj.open("GET", "https://test.api.weniv.co.kr/mall");
+      requestObj.onreadystatechange = () => {
+        if (requestObj.readyState === 4 && requestObj.status === 200) {
+          const result = requestObj.responseText;
+          resolve(result);
+        } else if (requestObj.readyState === 4 && requestObj.status !== 200) {
+          reject(new Error(`status(${requestObj.status})`));
+        }
+      };
+      requestObj.send();
+    });
+
+    function product(data) {
+      // 객체가 인자로 들어감
+
+      for (key in data) {
+        const p = document.createElement("p");
+        p.innerText = `${key}: ${data[key]}`;
+        document.body.appendChild(p);
+      }
+    }
+
+    // Promise 사용
+    req
+      .then((res) => {
+        res = JSON.parse(res); // Array 안에 객체들
+        for (const item of res) {
+          product(item); // 객체가 인자로 들어감
+
+          // for (key in item) {
+          //   const p = document.createElement("p");
+          //   p.innerText = key + ": " + item[key];
+          //   document.body.appendChild(p);
+          // }
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  </script>
+</html>

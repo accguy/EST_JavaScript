@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <style></style>
+  </head>
+  <body></body>
+  <script>
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", "https://test.api.weniv.co.kr/mall");
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          const response = xhr.responseText; // 무조건 텍스트로 오기때문에
+          const data = JSON.parse(response); // JSON.parse는 필수랑께
+          console.log("response:", typeof response); // string
+          console.log("JSON.parse(response):", typeof data); // object
+          console.log("---");
+          for (const item of data) {
+            console.log(item.productName);
+          }
+        }
+      }
+    };
+    setTimeout(() => {
+      xhr.send();
+    }, 2000);
+  </script>
+</html>
