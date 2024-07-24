@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <style></style>
+  </head>
+  <body></body>
+  <script>
+    // 함수의 리턴값을 리졸브로
+    async function message() {
+      // await -> resolve 될때까지 기다린후에 hello에 값이 할당됨
+      // await을 안쓰면 Promise 객체가 들어감
+      // await는 프로미스의 결과를 기다렸다가 넣어준다. 개꿀
+      const hello = await new Promise((resolve) => {
+        setTimeout(() => {
+          resolve("hello");
+        }, 100);
+      });
+
+      const world = await new Promise((resolve) => {
+        setTimeout(() => {
+          resolve("world");
+        }, 100);
+      });
+
+      console.log(`${hello} ${world}`);
+    }
+
+    message();
+  </script>
+</html>
