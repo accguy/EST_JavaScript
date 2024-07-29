@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <style></style>
+  </head>
+  <body></body>
+  <script>
+    // JSON.stringify([1,2,3]) == JSON.stringify([1,2,3]) 배열 비교가능!!
+    function solution(data) {
+      let stack = [];
+      let sandwich_count = 0;
+      for (let i of data) {
+        stack.push(i);
+        if (
+          JSON.stringify(stack.slice(-5)) === JSON.stringify([1, 2, 3, 4, 1])
+        ) {
+          stack.splice(-5);
+          sandwich_count++;
+        }
+      }
+      return sandwich_count;
+    }
+
+    console.log(solution([1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1]));
+  </script>
+</html>

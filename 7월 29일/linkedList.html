@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <style></style>
+  </head>
+  <body></body>
+  <script>
+    // 1. 객체로 연결리스트 만들어보기
+    let linkedList = { head: null };
+    let node1 = { data: 10, next: null };
+    let node2 = { data: 20, next: null };
+    let node3 = { data: 30, next: null };
+    let node4 = { data: 40, next: null };
+    let node5 = { data: 50, next: null };
+
+    linkedList.head = node1;
+    node1.next = node2;
+    node2.next = node3;
+    node3.next = node4;
+    node4.next = node5;
+
+    // console.log(linkedList.head); // node1
+    // console.log(linkedList.head.data); // 10
+    // console.log(linkedList.head.next.data); // 20
+    // console.log(linkedList.head.next.next.next.next.data); // 50
+    // console.log(linkedList.head.next.next.next.next.next); // null
+
+    // 2.객체로 만든 연결리스트 순회하기
+    // console.log("순회:");
+    // let current = linkedList.head;
+    // while (current) {
+    //   console.log(current.data);
+    //   current = current.next;
+    // }
+
+    // 3.객체로 만든 연결리스트에서 데이터 검색하기 - 인덱스 출력하기
+    console.log("검색:");
+    const getIndex = (data) => {
+      let current = linkedList.head;
+      let index = 0;
+      while (current) {
+        if (current.data === data) {
+          break;
+        }
+        index++;
+        current = current.next;
+      }
+      // 검색결과가 없는 경우
+      if (current === null) {
+        index = Infinity;
+      }
+      return index;
+    };
+  </script>
+</html>

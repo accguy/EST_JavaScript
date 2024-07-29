@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <style></style>
+  </head>
+  <body></body>
+  <script>
+    function solution(N) {
+      // return N.toString(2).replaceAll("1", "A").replaceAll("0", "B");
+      // N.toString(2) - 정수를 2진수 문자열로 변환
+      return N.toString(2).replace(/1/g, "A").replace(/0/g, "B");
+    }
+    console.log(solution(4));
+  </script>
+</html>

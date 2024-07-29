@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <style></style>
+  </head>
+  <body></body>
+  <script>
+    // 1. class로 연결리스트 만들어보기
+    class Node {
+      constructor(data) {
+        this.data = data;
+        this.next = null;
+      }
+    }
+    const node1 = new Node(10);
+    const node2 = new Node(20);
+    const node3 = new Node(30);
+    const node4 = new Node(40);
+    const node5 = new Node(50);
+
+    const head = node1;
+    node1.next = node2;
+    node2.next = node3;
+    node3.next = node4;
+    node4.next = node5;
+
+    function traverseList(node) {
+      let current = node;
+      while (current) {
+        console.log(current.data);
+        current = current.next;
+      }
+    }
+  </script>
+</html>

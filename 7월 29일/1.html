@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <style></style>
+  </head>
+  <body></body>
+  <script>
+    // function solution(data) {
+    //   let mean = 0;
+    //   let res = 0;
+    //   data.forEach((v) => {
+    //     mean = v.reduce((a, c) => a + c, 0) / v.length;
+    //     if (mean >= 80) {
+    //       res++;
+    //     }
+    //   });
+    //   return res;
+    // }
+
+    // function solution(data) {
+    //   let means = [];
+    //   data.forEach((v) => {
+    //     means.push(v.reduce((a, c) => a + c, 0) / v.length);
+    //   });
+    //   return means.filter((x) => x >= 80).length;
+    // }
+
+    function solution(data) {
+      return data.filter((v) => v.reduce((a, c) => a + c, 0) >= 240).length;
+    }
+
+    console.log(
+      "워밍업 문제 4:",
+      solution([
+        [],
+        [79, 79, 60],
+        [90, 99, 98],
+        [0, 0, 0],
+        [81, 80, 88],
+        [90, 99, 98],
+      ])
+    );
+  </script>
+</html>
