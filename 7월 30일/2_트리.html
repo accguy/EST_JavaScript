@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tree</title>
+    <style></style>
+  </head>
+  <body></body>
+  <script>
+    class Node {
+      constructor(data) {
+        this.data = data;
+        this.left = null;
+        this.right = null;
+      }
+    }
+
+    class Tree {
+      constructor(data) {
+        let init = new Node(data); // 루트 노드
+        this.root = init;
+        this.length = 1; // 노드 갯수
+      }
+
+      // 노드 추가 함수
+      insert(data) {
+        let newNode = new Node(data);
+        let current = this.root;
+        while (current) {
+          if (data == current.data) {
+            return;
+          } else if (data < current.data) {
+            if (!current.left) {
+              current.left = newNode;
+              this.length++;
+              return;
+            }
+            current = current.left;
+          } else {
+            if (!current.right) {
+              current.right = newNode;
+              this.length++;
+              return;
+            }
+            current = current.right;
+          }
+        }
+      }
+
+      // DFS - stack
+      dfs() {
+        let stack = [this.root];
+        let result = [];
+        let current;
+        while (stack.length != 0) {
+          current = stack.pop();
+          result.push(current.data);
+
+          if (current.right) {
+            stack.push(current.right);
+          }
+          if (current.left) {
+            stack.push(current.left);
+          }
+        }
+        return result;
+      }
+
+      // BFS - queue
+      bfs() {
+        let queue = [this.root];
+        let result = [];
+        let current;
+        while (queue.length != 0) {
+          current = queue.shift();
+          result.push(current.data);
+
+          if (current.left) {
+            queue.push(current.left);
+          }
+          if (current.right) {
+            queue.push(current.right);
+          }
+        }
+        return result;
+      }
+    }
+
+    let tree1 = new Tree(15);
+    tree1.insert(13);
+    tree1.insert(17);
+    tree1.insert(12);
+    tree1.insert(14);
+    tree1.insert(19);
+    tree1.insert(18);
+  </script>
+</html>
