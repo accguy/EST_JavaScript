@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <style></style>
+  </head>
+  <body>
+    <a href="https://school.programmers.co.kr/learn/courses/30/lessons/17680"
+      >코딩테스트 연습 2018 KAKAO BLIND RECRUITMENT [1차] 캐시
+    </a>
+  </body>
+  <script>
+    function solution(cacheSize, cities) {
+      let time = 0;
+      let cache = [];
+      for (let i = 0; i < cities.length; i++) {
+        let city = cities[i].toLowerCase();
+        let idx = cache.indexOf(city);
+        if (idx !== -1) {
+          //hit
+          cache.splice(idx, 1);
+          cache.push(city);
+          time += 1;
+        } else {
+          //miss
+          cache.push(city);
+          time += 5;
+          if (cache.length > cacheSize) {
+            cache.shift();
+          }
+        }
+      }
+      return time;
+    }
+  </script>
+</html>
